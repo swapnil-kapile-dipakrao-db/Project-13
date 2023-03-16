@@ -56,8 +56,7 @@ If you chose Create a new role, after the Lambda function is created, go to the 
 
 5.	Whether you created a new role or using the existing role, make sure to include the following policy, which gives your function permission to invoke a model endpoint:
 
-{
-    "Version": "2012-10-17",
+{ "Version": "2012-10-17",
     
     "Statement": [
     
@@ -67,11 +66,11 @@ If you chose Create a new role, after the Lambda function is created, go to the 
             
             "Action": "sagemaker:InvokeEndpoint",
             
-            "Resource": "*"
-            
+            "Resource": "*"   
        }
     ]
 }
+
 
 <img src="https://user-images.githubusercontent.com/117730243/225570935-2ffc977a-0fc7-49d6-a361-f1ad09aa0601.png">
 
