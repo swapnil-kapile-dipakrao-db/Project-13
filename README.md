@@ -58,7 +58,9 @@ If you chose Create a new role, after the Lambda function is created, go to the 
 
 {
     "Version": "2012-10-17",
+    
     "Statement": [
+    
        {    "Sid": "VisualEditor0",
             
             "Effect": "Allow",
