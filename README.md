@@ -12,7 +12,6 @@ The following diagram shows how the deployed model is called using serverless ar
 
 In this post, I show you how to invoke a model endpoint deployed by SageMaker using API Gateway and Lambda. For testing purposes, we use Postman.
 
-Click here to open the AWS console and follow along.
 
 ### Breast cancer model notebook
 
