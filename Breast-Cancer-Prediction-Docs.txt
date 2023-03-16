@@ -1,0 +1,161 @@
+Sagemaker links - 
+
+https://towardsdatascience.com/a-practical-guide-to-mlops-in-aws-sagemaker-part-i-1d28003f565
+
+https://aws.amazon.com/getting-started/hands-on/build-train-deploy-machine-learning-model-sagemaker/
+
+
+
+---------------------------------------------------------
+Build ML model using sagemaker Studio notebook - 
+
+Yiu tube - https://www.youtube.com/watch?v=1iSiN4sVMjE&t=1900s
+https://github.com/seanpmorgan/studio-notebook-webinar 
+https://github.com/aws-samples/sagemaker-studio-lifecycle-config-examples/blob/main/scripts/install-lsp-features/on-jupyter-server-start.sh
+
+pip install jupyterlab-code-formatter black
+%pip install --ignore-installed --upgrade tensorflow
+%pip install --upgrade boto3 sagemaker -U
+pip install scikit-learn --upgrade
+
+
+
+
+Go to lambda on AWS
+name to lambda function
+runtime - python 3.6
+Architecture - x86_64
+
+Create fucntion 
+copy the code form AWS
+deploy
+go to
+-----------------------------------------------------------------------------------------------------------------------
+
+Breast Cancer Prediction
+
+# End to end sagemaker with lambda API
+
+https://sagemaker-examples.readthedocs.io/en/latest/introduction_to_applying_machine_learning/breast_cancer_prediction/Breast%20Cancer%20Prediction.html
+https://aws.amazon.com/blogs/machine-learning/call-an-amazon-sagemaker-model-endpoint-using-amazon-api-gateway-and-aws-lambda/
+You Tube - https://www.youtube.com/watch?v=stD47vPDadI
+
+Creatr Sagemaker Instance
+instance type - ml.t.medium
+Permission and encryption - IAM role - Create new role - Any S3 bucket - Create notebook instance
+click on Open Jupyter 
+Go to Sagemaker Examples
+use Breast Cancer Prediction.ipynb - Create Copy
+
+It will open the Breast Cancer Prediction notebook
+%pip install --upgrade boto3 sagemaker -U
+Run all the cells.
+Once all cells have been run and endpoint created go to Sagemaker Lambda
+Create Function- Give name - 
+runtime - Python 3.9
+replace the below code in lambda fucntion:
+
+import os
+import io
+import boto3
+import json
+import csv
+
+# grab environment variables
+ENDPOINT_NAME = os.environ['ENDPOINT_NAME']
+runtime= boto3.client('runtime.sagemaker')
+
+def lambda_handler(event, context):
+    print("Received event: " + json.dumps(event, indent=2))
+    
+    data = json.loads(json.dumps(event))
+    payload = data['data']
+    print(payload)
+    
+    response = runtime.invoke_endpoint(EndpointName=ENDPOINT_NAME,
+                                       ContentType='text/csv',
+                                       Body=payload)
+    print(response)
+    result = json.loads(response['Body'].read().decode())
+    print(result)
+    pred = int(result['predictions'][0]['score'])
+    predicted_label = 'M' if pred == 1 else 'B'
+    
+    return predicted_label
+
+Deploy
+go to configuration
+Go to Variable Environment - edit - Create new environment
+Key - ENDPOINT_NAME
+Value - Genter the name of enpoint (Go to sagemaker inference to copy the endpoint name)
+
+Go to IAM - role - select the lambda funtcion role-permission policies - select policy AWSLambdaBasicExecutionRole-b28097
+
+edit policy- go to JSON and paste below code
+
+       {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "sagemaker:InvokeEndpoint",
+            "Resource": "*"
+        }
+
+review-save changes
+
+
+Go to API gateway in AWS Console
+REST API - Build - ok - 
+Choose the protocol - REST
+Create New API - New API
+Settings - API name - give name
+	Description - give description
+	create API
+
+Go to Actions - Create Resource -give resource name- Create Resource
+Go to Actions - Create Method -select POST - Tick the checkbox next to it
+Integration type - Lambda fuction
+Lambda Function - select the name of your lambda fucntion created
+Save -Ok
+Test
+in Request Body paste below data:
+{"data": "1257815, 5, 1, 3, 1, 2, 2, 1, 1, 6, 4, 3, 2, 5, 5, 6, 5, 4, 4, 23, 6, 3, 2, 7, 8, 8, 3, 2, 1, 6"} 
+
+Test
+It will give you a prediction for the given input as "B"
+
+
+Go to Action-  Deploy API
+Deployment stage - [New Stage]
+Stage Name - PROD
+Stage Description - Production Environment
+Deployment Sescription - 
+Deploy 
+
+It will create Invoke URL
+
+Go to AWS console- Create T2.micro instance - 
+
+sudo su
+sudo apt update
+sudo apt upgrade
+apt install python3-pip
+sudo pip install --upgrade boto3
+python3
+import json
+import requests
+r=requests.post("https://ntvhjus37g.execute-api.us-east-1.amazonaws.com/PROD/api-ml-model", data=json.dumps({"data": "1257815, 5, 1, 3, 1, 2, 2, 1, 1, 6, 4, 3, 2, 5, 5, 6, 5, 4, 4, 23, 6, 3, 2, 7, 8, 8, 3, 2, 1, 6"})) 
+r.content
+
+It will give you a prediction as "B"
+
+
+
+
+
+
+
+
+
+
+
+
