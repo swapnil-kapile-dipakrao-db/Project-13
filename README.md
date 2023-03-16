@@ -4,7 +4,7 @@
 
 **By Archana Sawant, Swapnil Kapile, Sachin Pharande, Snehal Chaudhary, Rohit Patange** | on 17 March 2023 | in Amazon SageMaker, Machin Learning | Permalink |  Comments |  Share
 
-At AWS Machine Learning (ML) workshops, customers often ask, “After I deploy an endpoint, where do I go from there?” You can deploy an **Amazon SageMaker** trained and validated ML model as an online endpoint in production. Alternatively, you can choose which SageMaker functionality to use. For example, you can choose just to train a model or to host one. Whether you choose one SageMaker funct
+At AWS Machine Learning (ML) workshops, customers often ask, “After I deploy an endpoint, where do I go from there?” You can deploy an **Amazon SageMaker** trained and validated ML model as an online endpoint in production. Alternatively, you can choose which SageMaker functionality to use. For example, you can choose just to train a model or to host one. Whether you choose one SageMaker function.
 
 The following diagram shows how the deployed model is called using serverless architecture. Starting from the client side, a client script calls an **Amazon API** Gateway API action and passes parameter values. API Gateway is a layer that provides the API to the client. In addition, it seals the backend so that  **AWS Lambda** stays and runs in a protected private network. API Gateway passes the parameter values to the Lambda function. The Lambda function parses the value and sends it to the SageMaker model endpoint. The model performs the prediction and returns the predicted value to Lambda. The Lambda function parses the returned value and sends it back to API Gateway. API Gateway responds to the client with that value.
 
