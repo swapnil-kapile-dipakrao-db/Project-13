@@ -193,7 +193,7 @@ To learn more about SageMaker Inference, please refer to the following resources
 •	Inference endpoint testing from studio
 •	Roundup of re:Invent 2021 Amazon SageMaker announcements
 
-#### Conclusion
+### Conclusion
 
 In this post, you created a model endpoint deployed and hosted by SageMaker. Then you created serverless components (a REST API and Lambda function) that invoke the endpoint. Now you know how to call an ML model endpoint hosted by SageMaker using serverless technology.
 If you have feedback about this post, please leave it in the comments. If you have questions about implementing the example used in this post, you can also open a thread on the Developer Tools forum.
