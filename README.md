@@ -1,6 +1,6 @@
-## Project-13
+# Project-13
 
-# Call an Amazon SageMaker model endpoint using Amazon API Gateway and AWS Lambda
+## Call an Amazon SageMaker model endpoint using Amazon API Gateway and AWS Lambda
 
 **By Archana Sawant, Swapnil Kapile, Sachin Pharande, Snehal Chaudhary, Rohit Patange** | on 17 March 2023 | in Amazon SageMaker, Artificial Intelligence | Permalink |  Comments |  Share
 ##### December 2022: This post was reviewed and updated for accuracy.
