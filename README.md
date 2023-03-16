@@ -15,7 +15,7 @@ In this post, I show you how to invoke a model endpoint deployed by SageMaker us
 
 Click here to open the AWS console and follow along.
 
-###Breast cancer model notebook
+### Breast cancer model notebook
 
 We use a sample notebook provided by SageMaker called Breast Cancer Prediction.ipynb. You have access to this notebook on the SageMaker Examples tab.
 
