@@ -88,6 +88,7 @@ def lambda_handler(event, context):
     import boto3
     import json
     import csv
+    
     data = json.loads(json.dumps(event))
     payload = data['data']
     print(payload)
