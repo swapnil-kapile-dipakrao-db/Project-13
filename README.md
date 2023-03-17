@@ -157,7 +157,7 @@ When the sample notebook loads the dataset to the __Amazon Simple Storage Servic
 
 The following code is one row of the validation data from the file linear_validation.data in the validation folder:
 
-{“data”:”13.49,22.3,86.91,561.0,0.08752,0.07697999999999999,0.047510000000000004,0.033839999999999995,0.1809,0.057179999999999995,0.2338,1.3530000000000002,1.735,20.2,0.004455,0.013819999999999999,0.02095,0.01184,0.01641,0.001956,15.15,31.82,99.0,698.8,0.1162,0.1711,0.2282,0.1282,0.2871,0.06917000000000001″}
+     {"data": "1257815, 5, 1, 3, 1, 2, 2, 1, 1, 6, 4, 3, 2, 5, 5, 6, 5, 4, 4, 23, 6, 3, 2, 7, 8, 8, 3, 2, 1, 6"} 
 
 #### Test with Postman
 
