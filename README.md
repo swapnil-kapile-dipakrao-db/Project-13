@@ -76,12 +76,6 @@ If you chose Create a new role, after the Lambda function is created, go to the 
 
 The following is the sample Lambda function code:
 
-import os
-import io
-import boto3
-import json
-import csv
-
 # grab environment variables
 ENDPOINT_NAME = os.environ['ENDPOINT_NAME']
 runtime= boto3.client('runtime.sagemaker')
@@ -89,6 +83,12 @@ runtime= boto3.client('runtime.sagemaker')
 def lambda_handler(event, context):
     print("Received event: " + json.dumps(event, indent=2))
     
+  import os
+  import io
+  import boto3
+  import json
+  import csv
+
     data = json.loads(json.dumps(event))
     payload = data['data']
     print(payload)
