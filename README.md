@@ -183,10 +183,15 @@ For more information about invoking an API in API Gateway, see **Invoking a REST
 To learn more about SageMaker Inference, please refer to the following resources:
 
 •	SageMaker Inference documentation
+
 •	SageMaker Inference recommender
+
 •	SageMaker Serverless Inference
+
 •	SageMaker Asynchronous Inference
+
 •	Inference endpoint testing from studio
+
 •	Roundup of re:Invent 2021 Amazon SageMaker announcements
 
 ### Conclusion
