@@ -83,11 +83,15 @@ runtime= boto3.client('runtime.sagemaker')
 def lambda_handler(event, context):
     print("Received event: " + json.dumps(event, indent=2))
     
-  import os
-  import io
-  import boto3
-  import json
-  import csv
+    import os
+    
+    import io
+    
+    import boto3
+    
+    import json
+    
+    import csv
 
     data = json.loads(json.dumps(event))
     payload = data['data']
